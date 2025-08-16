@@ -1,0 +1,550 @@
+/* SM娃娃系赛博视觉 - K-pop诊断系统 */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=M+PLUS+Rounded+1c:wght@300;400;500;700&display=swap');
+
+/* 主体背景 - 螺旋星云效果 */
+.stApp {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #7209b7 100%);
+    font-family: 'Poppins', 'M PLUS Rounded 1c', sans-serif;
+    color: #ffffff;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 螺旋星云效果 - 更明亮 */
+.stApp::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: 
+        radial-gradient(ellipse 1000px 500px at 50% 50%, rgba(255, 182, 217, 0.4) 0%, rgba(255, 182, 217, 0.2) 30%, rgba(255, 182, 217, 0.05) 60%, transparent 80%),
+        radial-gradient(ellipse 800px 400px at 40% 60%, rgba(0, 212, 255, 0.35) 0%, rgba(0, 212, 255, 0.15) 25%, rgba(0, 212, 255, 0.03) 50%, transparent 70%),
+        radial-gradient(ellipse 600px 300px at 60% 40%, rgba(168, 230, 207, 0.3) 0%, rgba(168, 230, 207, 0.12) 20%, rgba(168, 230, 207, 0.02) 45%, transparent 65%),
+        radial-gradient(ellipse 400px 200px at 30% 70%, rgba(255, 154, 139, 0.25) 0%, rgba(255, 154, 139, 0.08) 40%, transparent 60%);
+    animation: spiralNebula 35s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+    transform-origin: center center;
+}
+
+@keyframes spiralNebula {
+    0% { 
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: translate(-50%, -50%) rotate(180deg) scale(1.2);
+        opacity: 1;
+    }
+    100% { 
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+        opacity: 0.8;
+    }
+}
+
+/* 隐藏默认元素 */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+.stDeployButton {visibility: hidden;}
+
+/* 自定义顶部导航栏 - 更明亮梦幻 */
+.custom-header {
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 217, 0.25) 0%, 
+        rgba(0, 212, 255, 0.2) 50%, 
+        rgba(168, 230, 207, 0.22) 100%);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 30px;
+    padding: 40px;
+    margin: 20px auto;
+    max-width: 900px;
+    text-align: center;
+    position: relative;
+    box-shadow: 
+        0 20px 60px rgba(255, 182, 217, 0.3),
+        0 0 40px rgba(0, 212, 255, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    z-index: 1;
+}
+
+/* 容器内的大标题样式 - 娃娃系发光 */
+.custom-header .main-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.8em;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #FFB6D9, #00D4FF, #A8E6CF, #FF9A8B);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(255, 182, 217, 0.6));
+    animation: dreamShimmer 4s ease-in-out infinite;
+    line-height: 1.2;
+}
+
+@keyframes dreamShimmer {
+    0%, 100% { 
+        background-position: 0% 50%;
+        filter: drop-shadow(0 0 20px rgba(255, 182, 217, 0.6));
+    }
+    25% { 
+        background-position: 100% 50%;
+        filter: drop-shadow(0 0 25px rgba(0, 212, 255, 0.6));
+    }
+    50% { 
+        background-position: 50% 100%;
+        filter: drop-shadow(0 0 30px rgba(168, 230, 207, 0.6));
+    }
+    75% { 
+        background-position: 50% 0%;
+        filter: drop-shadow(0 0 25px rgba(255, 154, 139, 0.6));
+    }
+}
+
+/* 容器内的副标题样式 - 更明亮 */
+.custom-header .main-subtitle {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 1.4em;
+    font-weight: 500;
+    color: #B8F2FF;
+    margin: 0;
+    text-shadow: 0 0 25px rgba(184, 242, 255, 1);
+    animation: subtleFloat 3s ease-in-out infinite alternate;
+}
+
+@keyframes subtleFloat {
+    0% { transform: translateY(0px); opacity: 0.9; }
+    100% { transform: translateY(-5px); opacity: 1; }
+}
+
+/* 主容器 - 更明亮梦幻 */
+.main-container {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.18) 0%, 
+        rgba(255, 182, 217, 0.12) 25%,
+        rgba(0, 212, 255, 0.1) 75%,
+        rgba(255, 255, 255, 0.15) 100%);
+    backdrop-filter: blur(25px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 35px;
+    padding: 50px;
+    margin: 30px auto;
+    max-width: 850px;
+    box-shadow: 
+        0 25px 80px rgba(0, 0, 0, 0.15),
+        0 0 50px rgba(255, 182, 217, 0.2),
+        inset 0 2px 0 rgba(255, 255, 255, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+/* 欢迎页容器 - 更明亮梦幻 */
+.welcome-container {
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 217, 0.2) 0%, 
+        rgba(168, 230, 207, 0.15) 50%,
+        rgba(0, 212, 255, 0.18) 100%);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 40px;
+    padding: 60px 50px;
+    margin: 30px auto;
+    max-width: 650px;
+    text-align: center;
+    box-shadow: 
+        0 30px 90px rgba(255, 182, 217, 0.3),
+        0 0 60px rgba(0, 212, 255, 0.2),
+        inset 0 2px 0 rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+    animation: bubbleFloat 6s ease-in-out infinite;
+}
+
+@keyframes bubbleFloat {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-10px) scale(1.02); }
+}
+
+/* 欢迎页内容样式 */
+.welcome-description {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.welcome-teaser {
+    color: #A8E6CF;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    font-style: italic;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    text-shadow: 0 0 20px rgba(168, 230, 207, 0.6);
+    animation: teaseGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes teaseGlow {
+    0% { opacity: 0.8; }
+    100% { opacity: 1; text-shadow: 0 0 30px rgba(168, 230, 207, 0.8); }
+}
+
+/* 问题容器 - 更明亮梦幻 */
+.question-container {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(0, 212, 255, 0.12) 50%,
+        rgba(255, 255, 255, 0.13) 100%);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(0, 212, 255, 0.5);
+    border-radius: 25px;
+    padding: 35px;
+    margin-bottom: 30px;
+    position: relative;
+    box-shadow: 
+        0 20px 60px rgba(0, 212, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    animation: cardFloat 5s ease-in-out infinite alternate;
+}
+
+@keyframes cardFloat {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-8px); }
+}
+
+/* 问题文字样式 */
+.question-text {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    line-height: 1.6;
+}
+
+/* 进度条 - 彩虹渐变 */
+.progress-container {
+    background: rgba(0, 0, 0, 0.2);
+    height: 15px;
+    border-radius: 25px;
+    margin: 30px 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #FFB6D9, #00D4FF, #A8E6CF, #FF9A8B);
+    background-size: 400% 100%;
+    height: 100%;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 25px;
+    box-shadow: 
+        0 0 30px rgba(255, 182, 217, 0.6),
+        inset 0 2px 0 rgba(255, 255, 255, 0.3);
+    animation: progressShimmer 3s ease-in-out infinite;
+}
+
+@keyframes progressShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.progress-text {
+    text-align: center;
+    color: #A1F0FF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95em;
+    font-weight: 600;
+    margin-top: 12px;
+    text-shadow: 0 0 20px rgba(161, 240, 255, 0.8);
+}
+
+/* 选项容器 - 窄一些的布局 */
+.options-container {
+    max-width: 85%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ====== 修复后的Radio样式 ====== */
+/* Radio选项组容器 */
+.stRadio > div {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 18px !important;
+}
+
+/* 每个选项label - 更明亮的卡片样式 */
+.stRadio > div > label {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.12) 0%, 
+        rgba(255, 182, 217, 0.08) 50%,
+        rgba(255, 255, 255, 0.1) 100%) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 20px !important;
+    padding: 25px !important;
+    margin-bottom: 18px !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: pointer !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 15px !important;
+    color: #ffffff !important;
+    font-family: 'M PLUS Rounded 1c', sans-serif !important;
+    overflow: hidden !important;
+    text-align: left !important;
+    user-select: none !important;
+}
+
+/* 选项卡片的文字部分 */
+.stRadio > div > label > div:last-child {
+    color: #ffffff !important;
+    font-family: 'M PLUS Rounded 1c', sans-serif !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    font-size: 1.1rem !important;
+    flex: 1 !important;
+}
+
+/* 轻盈hover效果 - 更明亮 */
+.stRadio > div > label:hover {
+    border: 2px solid rgba(0, 212, 255, 0.8) !important;
+    background: linear-gradient(135deg, 
+        rgba(0, 212, 255, 0.15) 0%, 
+        rgba(168, 230, 207, 0.12) 50%,
+        rgba(255, 182, 217, 0.13) 100%) !important;
+    transform: translateY(-5px) scale(1.02) !important;
+    box-shadow: 
+        0 15px 40px rgba(0, 212, 255, 0.3),
+        0 0 30px rgba(168, 230, 207, 0.25) !important;
+}
+
+/* 选中状态 - 更明亮的动态边框 */
+.stRadio > div > label:has(input[type="radio"]:checked) {
+    border: 2px solid rgba(255, 182, 217, 1) !important;
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 217, 0.2) 0%, 
+        rgba(0, 212, 255, 0.15) 50%,
+        rgba(168, 230, 207, 0.18) 100%) !important;
+    box-shadow: 
+        0 20px 50px rgba(255, 182, 217, 0.4),
+        0 0 40px rgba(255, 182, 217, 0.5),
+        inset 0 2px 0 rgba(255, 255, 255, 0.4) !important;
+    animation: selectedPulse 2s ease-in-out infinite !important;
+    transform: translateY(-5px) scale(1.02) !important;
+}
+
+/* 如果:has()不支持，使用备用选择器 */
+.stRadio > div > label[data-checked="true"] {
+    border: 2px solid rgba(255, 182, 217, 1) !important;
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 217, 0.2) 0%, 
+        rgba(0, 212, 255, 0.15) 50%,
+        rgba(168, 230, 207, 0.18) 100%) !important;
+    box-shadow: 
+        0 20px 50px rgba(255, 182, 217, 0.4),
+        0 0 40px rgba(255, 182, 217, 0.5),
+        inset 0 2px 0 rgba(255, 255, 255, 0.4) !important;
+    animation: selectedPulse 2s ease-in-out infinite !important;
+    transform: translateY(-5px) scale(1.02) !important;
+}
+
+@keyframes selectedPulse {
+    0%, 100% { 
+        border-color: rgba(255, 182, 217, 1);
+        box-shadow: 0 20px 50px rgba(255, 182, 217, 0.4), 0 0 40px rgba(255, 182, 217, 0.5);
+    }
+    50% { 
+        border-color: rgba(0, 212, 255, 1);
+        box-shadow: 0 25px 60px rgba(0, 212, 255, 0.5), 0 0 50px rgba(0, 212, 255, 0.6);
+    }
+}
+
+/* Radio按钮样式 - 更明亮 */
+.stRadio input[type="radio"] {
+    width: 20px !important;
+    height: 20px !important;
+    border: 2px solid rgba(255, 255, 255, 0.6) !important;
+    border-radius: 50% !important;
+    background: transparent !important;
+    appearance: none !important;
+    flex-shrink: 0 !important;
+    margin: 3px 0 0 0 !important;
+    transition: all 0.3s ease !important;
+}
+
+.stRadio input[type="radio"]:checked {
+    border-color: rgba(255, 182, 217, 1) !important;
+    background: radial-gradient(circle, #FFB6D9 30%, rgba(255, 182, 217, 0.3) 70%) !important;
+    box-shadow: 0 0 20px rgba(255, 182, 217, 0.8) !important;
+    animation: radioGlow 2s ease-in-out infinite alternate !important;
+}
+
+@keyframes radioGlow {
+    0% { box-shadow: 0 0 15px rgba(255, 182, 217, 0.6); }
+    100% { box-shadow: 0 0 25px rgba(255, 182, 217, 1); }
+}
+
+/* 💎 条纹渐变按钮 - 进入宇宙风格 */
+.stButton > button {
+    background: linear-gradient(45deg, #FFB6D9, #00D4FF, #A8E6CF, #FF9A8B) !important;
+    background-size: 400% 400% !important;
+    border: none !important;
+    border-radius: 25px !important;
+    color: #1a1a2e !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    padding: 18px 40px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 
+        0 15px 40px rgba(255, 182, 217, 0.3),
+        0 0 30px rgba(0, 212, 255, 0.2),
+        inset 0 2px 0 rgba(255, 255, 255, 0.3) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    animation: buttonShimmer 3s ease-in-out infinite !important;
+}
+
+@keyframes buttonShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* 按钮悬停效果 - 宇宙入口感 */
+.stButton > button:hover {
+    transform: translateY(-8px) scale(1.05) !important;
+    box-shadow: 
+        0 25px 60px rgba(255, 182, 217, 0.4),
+        0 0 50px rgba(0, 212, 255, 0.3),
+        0 0 80px rgba(168, 230, 207, 0.2),
+        inset 0 2px 0 rgba(255, 255, 255, 0.4) !important;
+    animation: universePortal 1.5s ease-in-out infinite !important;
+}
+
+@keyframes universePortal {
+    0%, 100% { 
+        box-shadow: 
+            0 25px 60px rgba(255, 182, 217, 0.4),
+            0 0 50px rgba(0, 212, 255, 0.3),
+            0 0 80px rgba(168, 230, 207, 0.2);
+    }
+    50% { 
+        box-shadow: 
+            0 30px 80px rgba(255, 182, 217, 0.6),
+            0 0 70px rgba(0, 212, 255, 0.5),
+            0 0 120px rgba(168, 230, 207, 0.4);
+    }
+}
+
+/* 欢迎页按钮特殊样式 */
+.welcome-container .stButton > button {
+    width: 100% !important;
+    max-width: 400px !important;
+    margin: 0 auto !important;
+    padding: 22px 0 !important;
+    font-size: 1.3rem !important;
+    border-radius: 30px !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 添加icon效果（用伪元素模拟） */
+.welcome-container .stButton > button::after {
+    content: "✨";
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%) translateX(30px);
+    opacity: 0;
+    transition: all 0.4s ease;
+    font-size: 1.5rem;
+}
+
+.welcome-container .stButton > button:hover::after {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+}
+
+/* 结果页面样式 */
+.result-role {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5em;
+    font-weight: 800;
+    margin-bottom: 25px;
+    text-align: center;
+    background: linear-gradient(45deg, #FFB6D9, #00D4FF, #A8E6CF);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 30px rgba(255, 182, 217, 0.6));
+    animation: resultShimmer 4s ease-in-out infinite;
+}
+
+@keyframes resultShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.result-description {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 1.3em;
+    font-weight: 500;
+    color: #A1F0FF;
+    margin-bottom: 35px;
+    text-align: center;
+    text-shadow: 0 0 20px rgba(161, 240, 255, 0.6);
+    line-height: 1.6;
+}
+
+/* 通用文本样式 */
+h1, h2, h3 {
+    color: #ffffff !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+p, li {
+    color: #ffffff !important;
+    font-family: 'M PLUS Rounded 1c', sans-serif !important;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .custom-header .main-title {
+        font-size: 2.8em;
+    }
+    
+    .main-container, .welcome-container {
+        margin: 15px;
+        padding: 30px 25px;
+    }
+    
+    .question-text {
+        font-size: 1.3em;
+    }
+    
+    .stButton > button {
+        font-size: 1rem !important;
+        padding: 16px 30px !important;
+    }
+    
+    .stRadio > div > label {
+        padding: 20px !important;
+        font-size: 1rem !important;
+    }
+}
